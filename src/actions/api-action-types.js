@@ -1,0 +1,9 @@
+const actionTypes = {
+  LOADING: 'LOADING',
+  LOADED: 'LOADED',
+  SEARCH_SUCCESS: 'SEARCH_SUCCESS',
+  SEARCH_API_ERRROR: 'SEARCH_API_ERROR',
+  SEARCH_FAIL: 'SEARCH_FAIL'
+};
+
+export default actionTypes;

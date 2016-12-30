@@ -1,0 +1,8 @@
+.featured {
+  background: rgba(33, 189, 247, 0.28);
+  border-radius: 4px 4px;
+  border: 1px solid #c9c9c9;
+  box-shadow: 0px 1px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  transform: scale(2) translateY(25px);
+}

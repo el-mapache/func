@@ -1,0 +1,42 @@
+.block {
+  display: block;
+}
+
+input {
+  font-size: 1.2em;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 6px 12px 6px 12px;
+}
+
+input:focus {
+  outline: 0;
+}
+
+.btn {
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 2px 2px;
+  cursor: pointer;
+  font-size: 0.875em;
+  outline: 0;
+  padding: 10px;
+  vertical-align: middle;
+}
+
+.btn:hover, .btn:active {
+  background: rgb(240, 210, 120);
+}
+
+.btn:disabled {
+  border-color: #999;
+}
+
+.btn:hover:disabled {
+  background: none;
+  cursor: initial;
+}
+
+.btn.inline {
+  margin-bottom: 6px;
+}
