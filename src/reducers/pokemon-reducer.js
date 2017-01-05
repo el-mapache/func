@@ -1,23 +1,16 @@
-import actionTypes from '../actions/api-action-types';
+import actionTypes from '../actions/types';
 import traverse from '../modules/traverse';
 import { fromNullable, of } from 'data.maybe';
 
 const defaultState = {
-  data: {
-    found: {},
-    current: fromNullable(),
-  },
+  found: {},
+  current: fromNullable(),
   isLoading: false,
   error: fromNullable()
 };
 
-const addPokemon = (pokemon, name, attributes) => {
-  if (name in pokemon) {
-    return Object.assign({}, pokemon);
-  }
-
-  return Object.assign({}, pokemon, {[name]: attributes});
-};
+const addPokemon = (pokemon, name, attributes) =>
+  Object.assign({}, pokemon, { [name]: attributes });
 
 const pokemonReducer = (state = defaultState, action) => {
   const { type, data } = action;
@@ -35,14 +28,12 @@ const pokemonReducer = (state = defaultState, action) => {
     };
   case actionTypes.SEARCH_SUCCESS:
     let { name, attributes } = data;
-    let found = addPokemon(state.data.found, name, attributes);
+    let found = addPokemon(state.found, name, attributes);
     let current = of(found[name]);
 
     return {
-      data: {
-        found,
-        current
-      },
+      found,
+      current,
       error: fromNullable(),
       isLoading: false
     };
@@ -50,8 +41,16 @@ const pokemonReducer = (state = defaultState, action) => {
     const resolveErrorFrom = traverse(['error', 'detail']);
 
     return {
-      ...state,
+      found: state.found,
+      current: fromNullable(),
       error: resolveErrorFrom(data),
+      isLoading: false
+    }
+  case actionTypes.SET_CURRENT:
+    return {
+      ...state,
+      current: of(data.current),
+      error: fromNullable(),
       isLoading: false
     }
   default:

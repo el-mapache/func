@@ -2,15 +2,19 @@ import React from 'react';
 import store from '../store';
 
 class Provider extends React.Component {
-  constructor() {
-    super()
+  getChildContext() {
+    return {
+      state: this.state
+    };
+  }
+  constructor(props, context) {
+    super(props, context)
     this.state = store.getState();
   }
 
   componentDidMount() {
-    const self = this;
     store.subscribe(() => {
-      self.setState(store.getState());
+      this.setState(store.getState());
     })
   }
 
@@ -19,5 +23,9 @@ class Provider extends React.Component {
     return React.cloneElement(this.props.children, {...state});
   }
 }
+
+Provider.childContextTypes = {
+  state: React.PropTypes.object
+};
 
 export default Provider;

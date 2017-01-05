@@ -1,7 +1,6 @@
 import { of, Right, Left } from 'data.either';
 import Task from 'data.task';
 import request from 'request';
-import interrupt from '../modules/interrupt';
 import parse from '../modules/parse';
 
 const API_BASE = 'https://pokeapi.co/api/v2';

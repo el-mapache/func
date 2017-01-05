@@ -1,4 +1,4 @@
-import actionTypes from './api-action-types';
+import actionTypes from '../types';
 import nullAction from './null-action';
 
 const loadingAction = nullAction(actionTypes.LOADING);
@@ -12,10 +12,18 @@ const searchSuccessAction = (name, attributes) => ({
   }
 });
 
-const searchFailAction = error => ({
+const searchFailAction = (error, query) => ({
   type: actionTypes.SEARCH_FAIL,
   data: {
-    error: error
+    error: error,
+    query: query
+  }
+});
+
+const setCurrentAction = current => ({
+  type: actionTypes.SET_CURRENT,
+  data: {
+    current
   }
 });
 
@@ -23,5 +31,6 @@ export {
   loadingAction,
   loadedAction,
   searchSuccessAction,
-  searchFailAction
+  searchFailAction,
+  setCurrentAction
 };
